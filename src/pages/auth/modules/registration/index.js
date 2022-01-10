@@ -1,0 +1,1 @@
+export { template as registration } from "./registration.tmpl";

@@ -1,0 +1,1 @@
+export { template as button } from "./button.tmpl";

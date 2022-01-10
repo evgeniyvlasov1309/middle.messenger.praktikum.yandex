@@ -1,0 +1,1 @@
+export { template as input } from "./input.tmpl";

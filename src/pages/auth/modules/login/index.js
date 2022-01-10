@@ -1,0 +1,1 @@
+export { template as login } from "./login.tmpl";

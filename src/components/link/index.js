@@ -1,0 +1,1 @@
+export { template as link } from "./link.tmpl";

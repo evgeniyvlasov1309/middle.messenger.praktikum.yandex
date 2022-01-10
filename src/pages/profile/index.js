@@ -1,0 +1,1 @@
+export { template as profile } from "./profile.tmpl";

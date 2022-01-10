@@ -1,0 +1,1 @@
+export { template as defaultTemplate } from "./default.tmpl";

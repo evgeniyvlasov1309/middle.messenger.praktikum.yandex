@@ -1,0 +1,36 @@
+@import "/src/css/variables.scss";
+
+.avatar {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 30px;
+  background: url("/src/images/image.svg") no-repeat center, $grey-light;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &__overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: .1s ease-out;
+    color: $white;
+    background: $black;
+    border-radius: 50%;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}

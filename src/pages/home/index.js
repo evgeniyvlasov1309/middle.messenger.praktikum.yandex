@@ -1,0 +1,1 @@
+export { template as home } from "./home.tmpl";

@@ -1,0 +1,1 @@
+export { template as passwordChange } from "./password-change.tmpl";
