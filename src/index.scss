@@ -1,0 +1,19 @@
+@import "/src/css/variables.scss";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $light-blue;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
