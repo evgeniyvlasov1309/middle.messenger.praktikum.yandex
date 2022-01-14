@@ -1,1 +1,1 @@
-export { template as registration } from "./registration.tmpl";
+export { registration } from "./registration";

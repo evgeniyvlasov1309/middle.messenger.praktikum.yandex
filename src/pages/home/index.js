@@ -1,1 +1,1 @@
-export { template as home } from "./home.tmpl";
+export { home } from "./home";

@@ -1,1 +1,1 @@
-export { template as login } from "./login.tmpl";
+export { login } from "./login";

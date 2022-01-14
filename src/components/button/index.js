@@ -1,1 +1,1 @@
-export { template as button } from "./button.tmpl";
+export { button } from "./button";

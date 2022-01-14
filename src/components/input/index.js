@@ -1,1 +1,1 @@
-export { template as input } from "./input.tmpl";
+export { input } from "./input";

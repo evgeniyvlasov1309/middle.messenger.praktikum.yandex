@@ -1,1 +1,1 @@
-export { template as edit } from "./edit.tmpl";
+export { edit } from "./edit";

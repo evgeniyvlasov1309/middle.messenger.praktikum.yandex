@@ -1,1 +1,1 @@
-export { template as chat } from "./chat.tmpl";
+export { chat } from "./chat";

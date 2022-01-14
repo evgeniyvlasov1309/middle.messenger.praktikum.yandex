@@ -1,1 +1,1 @@
-export { template as error } from "./error.tmpl";
+export { error } from "./error";

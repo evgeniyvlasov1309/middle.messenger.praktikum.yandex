@@ -1,1 +1,1 @@
-export { template as auth } from "./auth.tmpl";
+export { auth } from "./auth";

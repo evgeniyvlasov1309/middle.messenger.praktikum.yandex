@@ -1,1 +1,1 @@
-export { template as profile } from "./profile.tmpl";
+export { profile } from "./profile";

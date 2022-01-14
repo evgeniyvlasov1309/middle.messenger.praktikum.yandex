@@ -1,1 +1,1 @@
-export { template as avatar } from "./avatar.tmpl";
+export { avatar } from "./avatar";

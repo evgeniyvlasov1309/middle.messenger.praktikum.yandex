@@ -1,13 +1,8 @@
-import Templator from "/src/utils/templator";
-import styles from "./avatar.scss";
-
-export function template(context) {
-  return new Templator(`
-    <div class="avatar">
-      <input type="file" name="avatar" hidden>
-      <div class="avatar__overlay">
-        <span>Поменять аватар</span>
-      </div>
+export const template = `
+  <div class="avatar">
+    <input type="file" name="avatar" hidden>
+    <div class="avatar__overlay">
+      <span>Поменять аватар</span>
     </div>
-  `).compile(context)
-}
+  </div>
+`;
