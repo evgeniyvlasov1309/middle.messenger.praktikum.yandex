@@ -1,17 +1,17 @@
-@import "/src/css/variables.scss";
+@import "~/src/css/variables.scss";
 
 .profile {
-  max-width: 510px;
   width: 100%;
-  padding: 60px 0;
+  max-width: 510px;
   margin: 0 auto;
+  padding: 60px 0;
 
   &__name {
+    margin-bottom: 60px;
+    font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 500;
     text-align: center;
-    margin-bottom: 60px;
   }
 
   &-fields {
@@ -21,24 +21,24 @@
   &-field {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $grey;
     padding: 10px 0;
     font-size: 14px;
     line-height: 14px;
+    border-bottom: 1px solid $grey;
 
     &__data {
       color: $green;
     }
 
     &:last-child {
-      border-bottom: 0;
       margin-bottom: 50px;
+      border-bottom: 0;
     }
   }
 
   &-control {
-    border-bottom: 1px solid $grey;
     padding: 10px 0;
+    border-bottom: 1px solid $grey;
 
     &__link {
       font-size: 14px;
@@ -50,18 +50,18 @@
     }
 
     &:last-child {
-      border-bottom: 0;
       margin-bottom: 50px;
+      border-bottom: 0;
     }
   }
 
   &-back {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 64px;
     height: 100%;
     background: $blue;
@@ -69,7 +69,7 @@
     &__arrow {
       width: 28px;
       height: 28px;
-      background: url("/src/images/arrow.svg") no-repeat center, $green;
+      background: url("~/src/images/arrow.svg") no-repeat center, $green;
       border-radius: 50%;
     }
   }

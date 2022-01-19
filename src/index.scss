@@ -1,7 +1,7 @@
-@import "/src/css/variables.scss";
+@import "~/src/css/variables.scss";
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   background-color: $light-blue;
 }
 
@@ -11,9 +11,9 @@ body {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
