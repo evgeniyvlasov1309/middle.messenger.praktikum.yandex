@@ -1,30 +1,59 @@
-import button from "~/src/components/button";
-import input from "~/src/components/input";
-import Templator from "~/src/utils/templator";
+import Block, { Props } from "~/src/classes/block/block";
+import Form from "~/src/components/form/form";
+import Input from "~/src/components/input/input";
 import template from "./edit.tmpl";
 
-export default function edit(context = {}) {
-  const inputs = [
-    { className: "auth-form__input", name: "email", placeholder: "Почта" },
-    { className: "auth-form__input", name: "login", placeholder: "Логин" },
-    { className: "auth-form__input", name: "first_name", placeholder: "Имя" },
+export default class Edit extends Block {
+  fields: Input[] = [
+    {
+      className: "auth-form__input",
+      name: "email",
+      placeholder: "Почта",
+      rule: "email",
+    },
+    {
+      className: "auth-form__input",
+      name: "login",
+      placeholder: "Логин",
+      rule: "login",
+    },
+    {
+      className: "auth-form__input",
+      name: "first_name",
+      placeholder: "Имя",
+      rule: "name",
+    },
     {
       className: "auth-form__input",
       name: "second_name",
       placeholder: "Фамилия",
+      rule: "name",
     },
     {
       className: "auth-form__input",
       name: "display_name",
       placeholder: "Имя в чате",
     },
-    { className: "auth-form__input", name: "phone", placeholder: "Телефон" },
-  ];
+    {
+      className: "auth-form__input",
+      name: "phone",
+      placeholder: "Телефон",
+      rule: "phone",
+    },
+  ].map((field) => new Input(field));
 
-  context.children = `
-    ${inputs.map((inputCtx) => input(inputCtx)).join("")}
-    ${button({ text: "Сохранить", type: "button" })}
-  `;
+  constructor(props: Props = {}) {
+    super("div", props);
+    this.setProps({
+      form: new Form({
+        fields: this.fields,
+        submitText: "Сохранить",
+        onSubmit: () => {},
+      }),
+    });
+  }
 
-  return new Templator(template).compile(context);
+  render() {
+    return this.compile(template(this.props), this.props);
+  }
 }

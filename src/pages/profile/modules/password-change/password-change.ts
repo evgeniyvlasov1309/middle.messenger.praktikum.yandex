@@ -1,33 +1,39 @@
-import button from "~/src/components/button";
-import input from "~/src/components/input";
-import Templator from "~/src/utils/templator";
+import Block, { Props } from "~/src/classes/block/block";
+import Form from "~/src/components/form/form";
+import Input from "~/src/components/input/input";
 import template from "./password-change.tmpl";
 
-export default function passwordChange(context = {}) {
-  const inputs = [
+export default class PasswordChange extends Block {
+  fields: Input[] = [
     {
-      type: "password",
       className: "auth-form__input",
       name: "oldPassword",
       placeholder: "Старый пароль",
     },
     {
-      type: "password",
       className: "auth-form__input",
       name: "newPassword",
       placeholder: "Новый пароль",
+      rule: "password",
     },
     {
-      type: "password",
       className: "auth-form__input",
       placeholder: "Новый пароль еще раз",
     },
-  ];
+  ].map((field) => new Input(field));
 
-  context.children = `
-    ${inputs.map((inputCtx) => input(inputCtx)).join("")}
-    ${button({ text: "Сохранить", type: "button" })}
-  `;
+  constructor(props: Props = {}) {
+    super("div", props);
+    this.setProps({
+      form: new Form({
+        fields: this.fields,
+        submitText: "Сохранить",
+        onSubmit: () => {},
+      }),
+    });
+  }
 
-  return new Templator(template).compile(context);
+  render() {
+    return this.compile(template(this.props), this.props);
+  }
 }

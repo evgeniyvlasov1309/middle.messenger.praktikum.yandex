@@ -16,4 +16,26 @@
   &:hover {
     background-color: rgba($blue, 0.8);
   }
+
+  &--icon {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 0.7;
+    }
+  }
+
+  &--icon-small {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 0.7;
+    }
+  }
 }

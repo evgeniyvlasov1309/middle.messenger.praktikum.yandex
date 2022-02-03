@@ -1,0 +1,26 @@
+@import "~/src/css/variables.scss";
+
+.chat {
+  &-page {
+    display: flex;
+    height: 100%;
+  }
+
+  &-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    background-color: $blue;
+
+    &__chat-list {
+      flex-grow: 1;
+      border-right: 1px solid $grey;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}

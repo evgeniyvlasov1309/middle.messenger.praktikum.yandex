@@ -1,23 +1,13 @@
-import Templator from "~/src/utils/templator";
+import Block, { Props } from "~/src/classes/block/block";
 import "./auth.scss";
 import template from "./auth.tmpl";
-import login from "./modules/login";
-import registration from "./modules/registration";
 
-export default function auth(context = {}) {
-  const { pathname } = document.location;
-  switch (pathname) {
-    case "/auth/login":
-      context.children = login();
-      context.title = "Вход";
-      break;
-    case "/auth/registration":
-      context.children = registration();
-      context.title = "Регистрация";
-      break;
-    default:
-      break;
+export default class AuthPage extends Block {
+  constructor(props: Props = {}) {
+    super("div", props);
   }
 
-  return new Templator(template).compile(context);
+  render() {
+    return this.compile(template(this.props), this.props);
+  }
 }

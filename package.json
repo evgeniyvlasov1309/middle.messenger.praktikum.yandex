@@ -4,7 +4,7 @@
   "description": "макеты: https://www.figma.com/file/hSvTvs332iATu137e5wRqv/Chat?node-id=0%3A1",
   "scripts": {
     "start": "npm run build && node server.js",
-    "dev": "parcel index.html",
+    "dev": "rm -rf ./dist/* && parcel index.html",
     "build": "parcel build index.html",
     "eslint": "eslint . --ext .ts",
     "eslint:fix": "eslint . --ext .ts --fix",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/evgeniyvlasov1309/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^7.13.0",
@@ -45,6 +46,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "uuid": "^8.3.2"
   }
 }
