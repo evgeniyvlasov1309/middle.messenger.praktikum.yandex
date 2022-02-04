@@ -1,4 +1,4 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import validate, { ValidationRule } from "~/src/classes/validator";
 import { getClassName } from "~/src/utils/utils";
 import "./input.scss";
@@ -13,16 +13,19 @@ export interface IInput extends Props {
   error?: string;
 }
 
-export default class Input extends Block {
+export default class Input extends Block<IInput> {
   rule: ValidationRule | undefined;
+
+  propsClassName: string;
 
   value = "";
 
   constructor(props: IInput) {
     super("div", props);
+    this.propsClassName = this.props.className || "";
     this.setProps({
       selector: "input",
-      class: getClassName(["input", props.className || ""]),
+      className: getClassName(["input", this.propsClassName]),
       type: props.type || "text",
       events: {
         input: this.onInput.bind(this),
@@ -45,9 +48,9 @@ export default class Input extends Block {
 
     this.setProps({
       value: this.value,
-      class: getClassName([
+      className: getClassName([
         "input",
-        this.props.className || "",
+        this.propsClassName,
         errorMessage ? "input--error" : "",
       ]),
       error: errorMessage,

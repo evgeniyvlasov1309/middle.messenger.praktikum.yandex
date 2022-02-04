@@ -1,7 +1,7 @@
 import { IInput } from "./input";
 
 const template = (props: IInput) => `
-  <template class="{{ class }}">
+  <template class="{{ className }}">
     <input
       type="{{ type }}"
       class="input__element"

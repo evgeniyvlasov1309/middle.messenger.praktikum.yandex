@@ -1,17 +1,17 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import { childrenArrayToProps } from "~/src/utils/utils";
-import Button from "../button/button";
+import Button, { IButton } from "../button/button";
 import Input from "../input/input";
 import template from "./form.tmpl";
 
 export interface IForm extends Props {
-  fields: Block[];
+  fields: Input[];
   submitText?: string;
-  submitElement?: Block;
+  submitElement?: Block<IButton>;
   onSubmit: () => void;
 }
 
-export default class Form extends Block {
+export default class Form extends Block<IForm> {
   constructor(props: IForm) {
     super("form", props);
     this.setProps({
@@ -46,6 +46,6 @@ export default class Form extends Block {
   }
 
   render() {
-    return this.compile(template(this.props as IForm), this.props);
+    return this.compile(template(this.props), this.props);
   }
 }

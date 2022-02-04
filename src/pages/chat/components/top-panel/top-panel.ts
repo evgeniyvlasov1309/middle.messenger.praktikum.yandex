@@ -1,5 +1,4 @@
-import Block from "~/src/classes/block";
-import { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import Button from "~/src/components/button";
 import { getClassName } from "~/src/utils/utils";
 import "./top-panel.scss";

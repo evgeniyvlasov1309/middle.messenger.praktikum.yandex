@@ -1,5 +1,4 @@
-import Block from "~/src/classes/block";
-import { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import Input from "~/src/components/input";
 import "./chat-search.scss";
 import template from "./chat-search.tmpl";

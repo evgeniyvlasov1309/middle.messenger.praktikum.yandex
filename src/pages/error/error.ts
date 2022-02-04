@@ -1,4 +1,4 @@
-import Block from "~/src/classes/block/block";
+import Block from "~/src/classes/block";
 import Link from "~/src/components/link/link";
 import "./error.scss";
 import template from "./error.tmpl";
@@ -6,12 +6,14 @@ import template from "./error.tmpl";
 export interface IErrorPage {
   title: string;
   description: string;
+  link?: Link;
 }
 
-export default class ErrorPage extends Block {
+export default class ErrorPage extends Block<IErrorPage> {
   constructor(props: IErrorPage) {
     super("div", props);
     this.setProps({
+      ...props,
       link: new Link({ url: "/chat", text: "Назад к чатам" }),
     });
   }

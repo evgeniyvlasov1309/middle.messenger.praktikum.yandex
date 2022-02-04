@@ -1,5 +1,5 @@
 import { get } from "../utils/utils";
-import { Props } from "./block/block";
+import { Props } from "./block";
 
 export default class Templator {
   TEMPLATE_REGEXP = /\{\{(.*?)\}\}/gi;

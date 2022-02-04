@@ -1,4 +1,4 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import Avatar from "./components/avatar";
 import "./profile.scss";
 import template from "./profile.tmpl";

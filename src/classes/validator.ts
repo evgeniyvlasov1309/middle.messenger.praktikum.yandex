@@ -17,7 +17,8 @@ class Validator {
     login: (value: string) =>
       /^[A-Za-z\d-_]*[A-Za-z-_]+[A-Za-z\d-_]*$/.test(value) &&
       checkLength(value, 3, 20),
-    email: (value: string) => /\w+@\w+\./.test(value),
+    // https://learn.javascript.ru/regexp-groups
+    email: (value: string) => /^[-.\w]+@([\w-]+\.)+[\w-]+$/.test(value),
     password: (value: string) =>
       /(?=.*[A-Z])(?=.*\d)/.test(value) && checkLength(value, 8, 40),
     phone: (value: string) => /^\+?\d{10,15}$/.test(value),

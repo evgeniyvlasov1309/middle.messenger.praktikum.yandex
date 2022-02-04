@@ -1,7 +1,7 @@
 import { IButton } from "./button";
 
 const template = (props: IButton) => `
-  <template class="{{ class }}" type="{{ type }}">
+  <template class="{{ className }}" type="{{ type }}">
       {{ text }}
   </template>
 `;

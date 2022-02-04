@@ -1,5 +1,4 @@
-import Block from "~/src/classes/block";
-import { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import { getClassName } from "~/src/utils/utils";
 import "./chat-preview.scss";
 import template from "./chat-preview.tmpl";

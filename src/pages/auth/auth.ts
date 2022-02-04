@@ -1,4 +1,4 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import "./auth.scss";
 import template from "./auth.tmpl";
 

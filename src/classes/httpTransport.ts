@@ -11,16 +11,15 @@ interface Options {
   timeout?: number;
   method: METHODS;
   data?: any;
+  query?: any;
   headers?: any;
 }
 
 type OptionsWithoutMethod = Omit<Options, "method">;
+type GetRequestOptions = Omit<OptionsWithoutMethod, "data">;
 
 class HTTPTransport {
-  get(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
+  get(url: string, options: GetRequestOptions = {}): Promise<XMLHttpRequest> {
     return this.request(
       url,
       { ...options, method: METHODS.GET },
@@ -66,14 +65,12 @@ class HTTPTransport {
     options: Options,
     timeout = 5000
   ): Promise<XMLHttpRequest> {
-    const { method, data, headers } = options;
+    const { method, query, data, headers } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      if (method === METHODS.GET) {
-        url = `${url}?${getQueryString(data)}`;
-      }
+      url = `${url}?${getQueryString(query)}`;
 
       for (const key in headers) {
         xhr.setRequestHeader(key, headers[key]);
@@ -89,7 +86,7 @@ class HTTPTransport {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      if (method === METHODS.GET || !data) {
+      if (!data) {
         xhr.send();
       } else {
         xhr.send(data);

@@ -1,4 +1,4 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
 import Input from "~/src/components/input/input";
 import Link from "~/src/components/link/link";

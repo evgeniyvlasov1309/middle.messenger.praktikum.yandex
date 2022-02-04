@@ -1,4 +1,4 @@
-import Block, { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import Button from "~/src/components/button/button";
 import Link from "~/src/components/link/link";
 import template from "./info.tmpl";

@@ -1,5 +1,4 @@
-import Block from "~/src/classes/block";
-import { Props } from "~/src/classes/block/block";
+import Block, { Props } from "~/src/classes/block";
 import AuthPage from "../auth";
 import Login from "../auth/modules/login";
 import Registration from "../auth/modules/registration";
