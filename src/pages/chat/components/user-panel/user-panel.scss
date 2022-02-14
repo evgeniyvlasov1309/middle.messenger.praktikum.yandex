@@ -1,0 +1,21 @@
+@import "~/src/css/variables.scss";
+
+.user-panel {
+  display: flex;
+  justify-content: end;
+  padding: 8px 12px;
+  background-color: $green;
+
+  &__add-chat {
+    margin-right: 12px;
+    background: url("~/src/images/add.svg") no-repeat center, $green;
+  }
+
+  &__avatar {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: $white;
+    border-radius: 50%;
+  }
+}

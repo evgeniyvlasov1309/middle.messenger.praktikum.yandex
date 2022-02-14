@@ -1,0 +1,10 @@
+@import "~/src/css/variables.scss";
+
+.chat-search {
+  padding: 10px 10px 15px;
+  border-right: 1px solid $grey;
+
+  &__input.input {
+    margin-bottom: 0;
+  }
+}

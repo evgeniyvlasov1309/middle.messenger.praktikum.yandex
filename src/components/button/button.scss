@@ -1,19 +1,41 @@
-@import "/src/css/variables.scss";
+@import "~/src/css/variables.scss";
 
 .btn {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  width: 100%;
   padding: 14px;
   color: $white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
   background-color: $blue;
   border: none;
   border-radius: 6px;
-  width: 100%;
   cursor: pointer;
-  transition: .1s ease-out background-color;
+  transition: 0.1s ease-out background-color;
 
   &:hover {
-    background-color: rgba($blue, .8);
+    background-color: rgba($blue, 0.8);
+  }
+
+  &--icon {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 0.7;
+    }
+  }
+
+  &--icon-small {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 0.7;
+    }
   }
 }

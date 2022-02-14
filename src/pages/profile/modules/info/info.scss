@@ -1,17 +1,17 @@
-@import "/src/css/variables.scss";
+@import "~/src/css/variables.scss";
 
 .profile {
-  max-width: 510px;
   width: 100%;
-  padding: 60px 0;
+  max-width: 510px;
   margin: 0 auto;
+  padding: 60px 0;
 
   &__name {
+    margin-bottom: 60px;
+    font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 500;
     text-align: center;
-    margin-bottom: 60px;
   }
 
   &-fields {
@@ -21,24 +21,24 @@
   &-field {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $grey;
     padding: 10px 0;
     font-size: 14px;
     line-height: 14px;
+    border-bottom: 1px solid $grey;
 
     &__data {
       color: $green;
     }
 
     &:last-child {
-      border-bottom: 0;
       margin-bottom: 50px;
+      border-bottom: 0;
     }
   }
 
   &-control {
-    border-bottom: 1px solid $grey;
     padding: 10px 0;
+    border-bottom: 1px solid $grey;
 
     &__link {
       font-size: 14px;

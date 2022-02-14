@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+    "stylelint-prettier/recommended"
+  ],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "color-hex-case": "lower"
+  },
+  "files": ["**/*.scss"],
+  "ignoreFiles": ["dist/*"]
+}

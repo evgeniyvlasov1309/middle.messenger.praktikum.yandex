@@ -1,0 +1,39 @@
+@import "~/src/css/variables.scss";
+
+.top-panel {
+  padding: 0 20px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid $grey;
+  }
+
+  &__avatar {
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  &__avatar-img {
+    display: block;
+  }
+
+  &__title {
+    margin-left: 10px;
+    color: $green;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__action-button.btn {
+    margin-left: auto;
+    background: url("~/src/images/dots.svg") center no-repeat;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: $green;
+    }
+  }
+}

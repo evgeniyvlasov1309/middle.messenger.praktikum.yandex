@@ -1,16 +1,35 @@
-@import "/src/css/variables.scss";
+@import "~/src/css/variables.scss";
 
 .input {
-  font-size: 16px;
-  line-height: 20px;
-  color: $black;
-  border: 1px solid $grey;
-  border-radius: 6px;
-  padding: 14px;
   width: 100%;
   margin-bottom: 20px;
 
-  &::placeholder {
-    color: $grey;
+  &__element {
+    width: 100%;
+    padding: 14px;
+    color: $black;
+    font-size: 16px;
+    line-height: 20px;
+    border: 1px solid $grey;
+    border-radius: 6px;
+
+    &::placeholder {
+      color: $grey;
+    }
+  }
+
+  &--error {
+    margin-bottom: 10px;
+  }
+
+  &--error &__element {
+    border-color: $red;
+  }
+
+  &__error {
+    margin: 5px 0 0 14px;
+    color: $red;
+    font-size: 12px;
+    line-height: 12px;
   }
 }
