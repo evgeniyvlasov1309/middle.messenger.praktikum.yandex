@@ -15,4 +15,7 @@ npm run start
 сборка проекта:
 npm run build
 
+запуск тестов:
+npm run test
+
 Ссылка на пуллреквест Sprint 2: https://github.com/evgeniyvlasov1309/middle.messenger.praktikum.yandex/pull/2
