@@ -3,7 +3,11 @@ export type Callback = (...args: any[]) => any;
 export type Listeners = Record<string, Callback[]>;
 
 export default class EventBus {
-  constructor(public listeners: Listeners = {}) {}
+  public listeners: Listeners;
+
+  constructor(listeners: Listeners = {}) {
+    this.listeners = listeners;
+  }
 
   on(event: string, callback: Callback) {
     if (!this.listeners[event]) {

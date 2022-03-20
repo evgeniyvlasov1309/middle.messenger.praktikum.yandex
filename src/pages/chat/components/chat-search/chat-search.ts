@@ -1,5 +1,7 @@
 import Block, { Props } from "~/src/classes/block";
 import Input from "~/src/components/input";
+import chatController from "~/src/controllers/chat-controller";
+import { debounce } from "~/src/utils/utils";
 import "./chat-search.scss";
 import template from "./chat-search.tmpl";
 
@@ -10,7 +12,16 @@ export default class ChatSearch extends Block {
       input: new Input({
         placeholder: "Поиск",
         className: "chat-search__input",
+        events: {
+          input: debounce(this.onInput.bind(this)),
+        },
       }),
+    });
+  }
+
+  onInput(e: any) {
+    chatController.getChats({
+      title: e.target.value,
     });
   }
 

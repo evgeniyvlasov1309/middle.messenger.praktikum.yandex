@@ -1,3 +1,4 @@
+import env from "../constants/env";
 import { getQueryString } from "../utils/utils";
 
 enum METHODS {
@@ -18,8 +19,16 @@ interface Options {
 type OptionsWithoutMethod = Omit<Options, "method">;
 type GetRequestOptions = Omit<OptionsWithoutMethod, "data">;
 
-class HTTPTransport {
-  get(url: string, options: GetRequestOptions = {}): Promise<XMLHttpRequest> {
+export default class HTTPTransport {
+  public path: string;
+  public baseUrl: string;
+
+  constructor(path: string = "", baseUrl: string = env.HOST_API) {
+    this.path = path;
+    this.baseUrl = baseUrl;
+  }
+
+  get<T>(url: string, options: GetRequestOptions = {}): Promise<T> {
     return this.request(
       url,
       { ...options, method: METHODS.GET },
@@ -27,10 +36,7 @@ class HTTPTransport {
     );
   }
 
-  post(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
+  post<T>(url: string, options: OptionsWithoutMethod = {}): Promise<T> {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
@@ -38,10 +44,7 @@ class HTTPTransport {
     );
   }
 
-  put(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
+  put<T>(url: string, options: OptionsWithoutMethod = {}): Promise<T> {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
@@ -49,10 +52,7 @@ class HTTPTransport {
     );
   }
 
-  delete(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
+  delete<T>(url: string, options: OptionsWithoutMethod = {}): Promise<T> {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },
@@ -60,26 +60,42 @@ class HTTPTransport {
     );
   }
 
-  request(
-    url: string,
-    options: Options,
-    timeout = 5000
-  ): Promise<XMLHttpRequest> {
-    const { method, query, data, headers } = options;
+  request<T>(url: string, options: Options, timeout = 5000): Promise<T> {
+    const {
+      method,
+      query,
+      data,
+      headers = {
+        "content-type": "application/json;charset=UTF-8",
+      },
+    } = options;
 
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+      const xhr = new window.XMLHttpRequest();
 
-      url = `${url}?${getQueryString(query)}`;
+      url = `${this.baseUrl}${this.path}${url}?${getQueryString(query)}`;
+
+      xhr.open(method, url);
+      xhr.withCredentials = true;
 
       for (const key in headers) {
         xhr.setRequestHeader(key, headers[key]);
       }
 
-      xhr.open(method, url);
-
       xhr.onload = function () {
-        resolve(xhr);
+        let response;
+
+        try {
+          response = JSON.parse(xhr.responseText);
+        } catch (e) {
+          response = xhr.responseText;
+        }
+
+        if (xhr.status !== 200) {
+          reject(response.reason);
+        } else {
+          resolve(response);
+        }
       };
 
       xhr.onabort = reject;
@@ -89,7 +105,11 @@ class HTTPTransport {
       if (!data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        const payload =
+          headers["content-type"] === "application/json;charset=UTF-8"
+            ? JSON.stringify(data)
+            : data;
+        xhr.send(payload);
       }
 
       setTimeout(() => {
@@ -98,7 +118,3 @@ class HTTPTransport {
     });
   }
 }
-
-const http = new HTTPTransport();
-
-export default http;

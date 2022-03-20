@@ -3,6 +3,7 @@
 .chat-preview {
   padding: 0 10px;
   color: $white;
+  cursor: pointer;
 
   &.active {
     color: $green;

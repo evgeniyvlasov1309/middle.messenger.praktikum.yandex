@@ -3,8 +3,11 @@ import { Props } from "./block";
 
 export default class Templator {
   TEMPLATE_REGEXP = /\{\{(.*?)\}\}/gi;
+  public _template: string;
 
-  constructor(public _template: string) {}
+  constructor(template: string) {
+    this._template = template;
+  }
 
   compile(context: Props) {
     return this._compileTemplate(this._template, context);

@@ -1,4 +1,6 @@
 import Block from "../classes/block";
+import store, { State, StoreEvents } from "../classes/store";
+import { Indexed } from "./types";
 
 export function render(query: string, block: Block) {
   const root = document.querySelector(query);
@@ -61,4 +63,82 @@ export function getQueryString(data: any) {
     result.push(`${key}=${data[key].toString()}`);
   }
   return result.join("&");
+}
+
+export function isEqual(lhs: string, rhs: string) {
+  return lhs === rhs;
+}
+
+export function merge(lhs: Indexed, rhs: Indexed): Indexed {
+  for (let p in rhs) {
+    if (!rhs.hasOwnProperty(p)) {
+      continue;
+    }
+
+    try {
+      if ((rhs[p] as object).constructor === Object) {
+        rhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);
+      } else {
+        lhs[p] = rhs[p];
+      }
+    } catch (e) {
+      lhs[p] = rhs[p];
+    }
+  }
+
+  return lhs;
+}
+
+export function set(
+  object: Indexed | unknown,
+  path: string,
+  value: unknown
+): Indexed | unknown {
+  if (typeof object !== "object") {
+    return object;
+  }
+
+  if (typeof path !== "string") {
+    throw new Error("path must be string");
+  }
+
+  const objectFromPath: Indexed = path
+    .split(".")
+    .reduceRight((prev: Indexed, val, index, arr) => {
+      prev = {
+        [val]: index === arr.length - 1 ? value : prev,
+      };
+
+      return prev;
+    }, {});
+
+  return merge(object as Indexed, objectFromPath);
+}
+
+export function connect(mapStateToProps: (state: State) => Indexed) {
+  return function (Component: typeof Block) {
+    return class extends Component {
+      constructor(props: any = {}) {
+        super({ ...props, ...mapStateToProps(store.getState()) });
+
+        store.on(StoreEvents.Updated, () => {
+          this.setProps({ ...mapStateToProps(store.getState()) });
+        });
+      }
+    };
+  };
+}
+
+export function debounce(func: Function, timeout = 1000) {
+  let timer: NodeJS.Timeout;
+  return (...args: any) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
+export function formatDate(date: string) {
+  return new Date(date).toLocaleString();
 }

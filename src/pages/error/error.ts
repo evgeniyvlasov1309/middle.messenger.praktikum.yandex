@@ -14,7 +14,7 @@ export default class ErrorPage extends Block<IErrorPage> {
     super("div", props);
     this.setProps({
       ...props,
-      link: new Link({ url: "/chat", text: "Назад к чатам" }),
+      link: new Link({ url: "/chat", content: "Назад к чатам" }),
     });
   }
 

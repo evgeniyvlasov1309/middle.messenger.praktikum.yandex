@@ -8,7 +8,7 @@ export interface IForm extends Props {
   fields: Input[];
   submitText?: string;
   submitElement?: Block<IButton>;
-  onSubmit: () => void;
+  onSubmit: (data: any) => void;
 }
 
 export default class Form extends Block<IForm> {
@@ -28,7 +28,7 @@ export default class Form extends Block<IForm> {
     });
   }
 
-  submitHandler(e: Event) {
+  submitHandler(e: any) {
     e.preventDefault();
     if (!this.validate()) {
       return;
@@ -38,7 +38,8 @@ export default class Form extends Block<IForm> {
     for (const [name, value] of formData) {
       result[name] = value;
     }
-    console.log(result);
+
+    this.props.onSubmit(result);
   }
 
   validate() {

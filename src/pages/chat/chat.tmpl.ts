@@ -4,18 +4,19 @@ const template = (props: Props) => `
 <template class="chat-page">
   <div class="chat-sidebar">
     {{ chatSearch }}
-    <div class="chat-sidebar__chat-list">
-      {{ chatPreview1 }}
-      {{ chatPreview2 }}
-    </div>
+    {{ chatList }}
     {{ userPanel }}
   </div>
   <div class="chat-content">
-    {{ topPanel }}
+    ${
+      props.chat && props.chat.id
+        ? `{{ topPanel }}
     {{ messageList }}
-    {{ messagePanel }}
+    {{ messagePanel }}`
+        : `<div class="chat-empty-label">Выберите чат чтобы отправить сообщение</div>`
+    }
+    
   </div>
 </template>
 `;
-
 export default template;

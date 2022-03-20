@@ -1,5 +1,5 @@
 import { v4 as makeUUID } from "uuid";
-import { getHtmlFromString } from "~/src/utils/utils";
+import { getHtmlFromString } from "../../src/utils/utils";
 import EventBus from "./eventBus";
 import { compile } from "./templator";
 
@@ -11,6 +11,7 @@ export interface Meta<T> {
 }
 
 type Children<T> = Record<string, Block<T>>;
+
 export default class Block<T extends Props = Props> {
   static EVENTS = {
     INIT: "init",
@@ -52,7 +53,7 @@ export default class Block<T extends Props = Props> {
   }
 
   private _registerEvents(eventBus: EventBus) {
-    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -85,7 +86,7 @@ export default class Block<T extends Props = Props> {
     this._element = this._createDocumentElement(tagName);
   }
 
-  init() {
+  _init() {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -114,12 +115,7 @@ export default class Block<T extends Props = Props> {
   }
 
   componentDidUpdate(oldProps: T, newProps: T) {
-    for (const key in newProps) {
-      if (newProps[key] !== oldProps[key]) {
-        return true;
-      }
-    }
-    return false;
+    return true;
   }
 
   setProps = (nextProps: T) => {
@@ -212,7 +208,7 @@ export default class Block<T extends Props = Props> {
 
   show() {
     if (this._element) {
-      (this._element as HTMLElement).style.display = "block";
+      (this._element as HTMLElement).style.display = "";
     }
   }
 

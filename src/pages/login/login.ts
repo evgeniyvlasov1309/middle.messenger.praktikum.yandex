@@ -1,10 +1,14 @@
+import { LoginRequest } from "~/src/api/auth/auth-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
 import Input from "~/src/components/input/input";
 import Link from "~/src/components/link/link";
+import authController from "~/src/controllers/auth-controller";
+import withUser from "~/src/selectors/user";
+import "./login.scss";
 import template from "./login.tmpl";
 
-export default class Login extends Block {
+class LoginPage extends Block {
   fields: Input[] = [
     {
       type: "text",
@@ -14,7 +18,7 @@ export default class Login extends Block {
       rule: "required",
     },
     {
-      type: "text",
+      type: "password",
       className: "auth-form__input",
       name: "password",
       placeholder: "Пароль",
@@ -29,16 +33,22 @@ export default class Login extends Block {
         fields: this.fields,
         submitText: "Войти",
         footer: new Link({
-          text: "Нет аккаунта?",
-          url: "/auth/registration",
+          content: "Нет аккаунта?",
+          url: "/sign-up",
           className: "auth-form__link",
         }),
-        onSubmit: () => {},
+        onSubmit: this.onSubmit.bind(this),
       }),
     });
+  }
+
+  onSubmit(data: LoginRequest) {
+    authController.login(data);
   }
 
   render() {
     return this.compile(template(this.props), this.props);
   }
 }
+
+export default withUser(LoginPage as typeof Block);

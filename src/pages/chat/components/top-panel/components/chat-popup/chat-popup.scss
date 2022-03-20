@@ -1,0 +1,14 @@
+.chat-popup {
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__link:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
