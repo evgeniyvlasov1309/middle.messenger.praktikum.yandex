@@ -19,6 +19,7 @@ export default class ChatList extends Block<Props> {
 
     store.on(StoreEvents.Updated, () => {
       const currentChat = store.getState().chat;
+
       const chats = store.getState().chats.map(
         (chat: Chat) =>
           new ChatPreview({
@@ -29,7 +30,9 @@ export default class ChatList extends Block<Props> {
               : defaultAvatar,
             content: chat.last_message?.content || "",
             count: chat.unread_count,
-            time: formatDate(chat.last_message?.time) || "",
+            time: chat.last_message?.time
+              ? formatDate(chat.last_message?.time)
+              : "",
             events: {
               click: this.onChatPreviewClick.bind(this, chat),
             },
