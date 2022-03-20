@@ -25,7 +25,6 @@ class MessageController {
 
   private _onMessageGet(event: MessageEvent) {
     const data = JSON.parse(event.data);
-    console.log(data);
 
     if (Array.isArray(data)) {
       store.set("messages", data.reverse());

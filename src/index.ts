@@ -51,8 +51,4 @@ class Component extends Block<IComponent> {
   }
 }
 
-const component = new Component();
-
-console.log(component);
-
 export default router;
