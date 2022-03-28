@@ -27,6 +27,7 @@
     "no-param-reassign": "off",
     "class-methods-use-this": "off",
     "import/no-cycle": "off",
-    "guard-for-in": "off"
+    "guard-for-in": "off",
+    "import/prefer-default-export": "off"
   }
 }

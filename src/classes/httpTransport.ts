@@ -21,9 +21,10 @@ type GetRequestOptions = Omit<OptionsWithoutMethod, "data">;
 
 export default class HTTPTransport {
   public path: string;
+
   public baseUrl: string;
 
-  constructor(path: string = "", baseUrl: string = env.HOST_API) {
+  constructor(path = "", baseUrl: string = env.HOST_API) {
     this.path = path;
     this.baseUrl = baseUrl;
   }

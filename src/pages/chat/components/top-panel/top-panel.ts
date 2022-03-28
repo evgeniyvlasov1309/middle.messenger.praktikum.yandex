@@ -21,8 +21,10 @@ import "./top-panel.scss";
 import template from "./top-panel.tmpl";
 
 export default class TopPanel extends Block {
-  _chatPopupActive: boolean = false;
+  _chatPopupActive = false;
+
   selectedUser: IUser | undefined;
+
   selectedChat: IChat | undefined;
 
   constructor(props: Props = {}) {
@@ -102,7 +104,7 @@ export default class TopPanel extends Block {
 
   componentDidMount(): void {
     store.on(StoreEvents.Updated, () => {
-      const chat = store.getState().chat;
+      const { chat } = store.getState();
 
       this.setProps({
         title: chat.title,

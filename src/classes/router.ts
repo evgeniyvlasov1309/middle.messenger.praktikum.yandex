@@ -2,8 +2,11 @@ import { Constructable, Route } from "./route";
 
 export class Router {
   static __instance: Router | null = null;
+
   public routes: Route[] = [];
+
   public history: History = window.history;
+
   private _currentRoute: Route | undefined;
 
   constructor(public _rootQuery: string = "") {

@@ -24,7 +24,7 @@ class ChatPage extends Block {
 
   componentDidMount(): void {
     store.on(StoreEvents.Updated, () => {
-      const chat = store.getState().chat;
+      const { chat } = store.getState();
 
       this.setProps({
         chat,

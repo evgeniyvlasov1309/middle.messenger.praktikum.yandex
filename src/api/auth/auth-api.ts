@@ -1,28 +1,30 @@
-import HTTP from "../../classes/httpTransport";
 import { BaseAPI } from "../base-api";
+import { IUser } from "../user/user-api.types";
 import { LoginRequest, RegistrationRequest } from "./auth-api.types";
 
-const authAPIInstance = new HTTP("/auth");
-
 class AuthAPI extends BaseAPI {
-  registration(data: RegistrationRequest) {
-    return authAPIInstance.post("/signup", {
+  constructor() {
+    super("/auth");
+  }
+
+  registration(data: RegistrationRequest): Promise<void> {
+    return this._instance.post("/signup", {
       data,
     });
   }
 
-  login(data: LoginRequest) {
-    return authAPIInstance.post("/signin", {
+  login(data: LoginRequest): Promise<void> {
+    return this._instance.post("/signin", {
       data,
     });
   }
 
-  getUser() {
-    return authAPIInstance.get("/user");
+  getUser(): Promise<IUser> {
+    return this._instance.get("/user");
   }
 
-  logout() {
-    return authAPIInstance.post("/logout");
+  logout(): Promise<void> {
+    return this._instance.post("/logout");
   }
 }
 

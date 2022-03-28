@@ -1,16 +1,16 @@
 import router from "..";
 import userApi from "../api/user/user-api";
 import {
+  IUser,
   PasswordRequest,
-  User,
   UserSearchRequest,
 } from "../api/user/user-api.types";
 import store from "../classes/store";
 
 class UserController {
-  async updateProfile(data: User) {
+  async updateProfile(data: IUser) {
     try {
-      await userApi.profile(data);
+      await userApi.setProfile(data);
 
       router.go("/settings");
     } catch (error) {
@@ -20,7 +20,7 @@ class UserController {
 
   async updateProfileAvatar(data: FormData) {
     try {
-      const user = await userApi.avatar(data);
+      const user = await userApi.setAvatar(data);
 
       store.set("user", user);
     } catch (error) {
@@ -30,7 +30,7 @@ class UserController {
 
   async updatePassword(data: PasswordRequest) {
     try {
-      await userApi.password(data);
+      await userApi.setPassword(data);
 
       router.go("/settings");
     } catch (error) {

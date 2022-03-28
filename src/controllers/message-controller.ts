@@ -4,9 +4,13 @@ import env from "../constants/env";
 
 class MessageController {
   _userId!: number;
+
   _chatId!: number;
+
   _token!: string;
+
   _ws!: WebSocket;
+
   _ping!: NodeJS.Timer;
 
   constructor() {

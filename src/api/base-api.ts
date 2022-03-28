@@ -1,17 +1,9 @@
+import HTTP from "../classes/httpTransport";
+
 export class BaseAPI {
-  create(data?: any): any {
-    throw new Error("Not implemented");
-  }
+  protected _instance: HTTP;
 
-  request(data?: any): any {
-    throw new Error("Not implemented");
-  }
-
-  update(data?: any): any {
-    throw new Error("Not implemented");
-  }
-
-  delete(data?: any): any {
-    throw new Error("Not implemented");
+  constructor(path: string) {
+    this._instance = new HTTP(path);
   }
 }

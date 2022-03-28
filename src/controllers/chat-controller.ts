@@ -24,7 +24,7 @@ class ChatController {
 
       await this.getChats();
 
-      return Promise.resolve();
+      return await Promise.resolve();
     } catch (error) {}
   }
 
@@ -32,7 +32,7 @@ class ChatController {
     try {
       await chatApi.addUserToChat(data);
 
-      return Promise.resolve();
+      return await Promise.resolve();
     } catch (error) {
       alert("Пользователь не найден");
     }
@@ -42,7 +42,7 @@ class ChatController {
     try {
       await chatApi.removeUserFromChat(data);
 
-      return Promise.resolve();
+      return await Promise.resolve();
     } catch (error) {
       alert(error);
     }
@@ -54,7 +54,7 @@ class ChatController {
 
       this.getChats();
 
-      return Promise.resolve();
+      return await Promise.resolve();
     } catch (error) {
       alert(error);
     }

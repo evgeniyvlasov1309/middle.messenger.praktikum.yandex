@@ -25,7 +25,7 @@ export default class Avatar extends Block {
 
   componentDidMount(): void {
     store.on(StoreEvents.Updated, () => {
-      const avatar = store.getState().user.avatar;
+      const { avatar } = store.getState().user;
 
       this.setProps({
         src: avatar ? `${env.HOST_RESOURCES}${avatar}` : defaultAvatar,

@@ -1,5 +1,5 @@
 import { v4 as makeUUID } from "uuid";
-import { getHtmlFromString } from "../../src/utils/utils";
+import { getHtmlFromString } from "../utils/utils";
 import EventBus from "./eventBus";
 import { compile } from "./templator";
 

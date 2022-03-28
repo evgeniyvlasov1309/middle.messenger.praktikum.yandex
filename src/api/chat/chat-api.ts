@@ -1,4 +1,3 @@
-import HTTP from "../../classes/httpTransport";
 import { BaseAPI } from "../base-api";
 import {
   AddUserRequest,
@@ -10,11 +9,13 @@ import {
   TokenResponse,
 } from "./chat-api.types";
 
-const chatAPIInstance = new HTTP("/chats");
-
 class ChatAPI extends BaseAPI {
+  constructor() {
+    super("/chats");
+  }
+
   getChats(data?: GetChatRequest): Promise<IChat[]> {
-    return chatAPIInstance.get("/", {
+    return this._instance.get("/", {
       query: {
         title: data ? data.title : "",
         offset: 0,
@@ -23,38 +24,32 @@ class ChatAPI extends BaseAPI {
     });
   }
 
-  create(data: CreateChatRequest) {
-    return chatAPIInstance.post("/", {
+  create(data: CreateChatRequest): Promise<void> {
+    return this._instance.post("/", {
       data,
     });
   }
 
-  delete(data: DeleteChatRequest) {
-    return chatAPIInstance.delete("/", {
+  addUserToChat(data: AddUserRequest): Promise<void> {
+    return this._instance.put("/users", {
       data,
     });
   }
 
-  addUserToChat(data: AddUserRequest) {
-    return chatAPIInstance.put("/users", {
+  removeUserFromChat(data: RemoveUserRequest): Promise<void> {
+    return this._instance.delete("/users", {
       data,
     });
   }
 
-  removeUserFromChat(data: RemoveUserRequest) {
-    return chatAPIInstance.delete("/users", {
-      data,
-    });
-  }
-
-  removeChat(data: DeleteChatRequest) {
-    return chatAPIInstance.delete("/", {
+  removeChat(data: DeleteChatRequest): Promise<void> {
+    return this._instance.delete("/", {
       data,
     });
   }
 
   getChatToken(chatId: number): Promise<TokenResponse> {
-    return chatAPIInstance.post(`/token/${chatId}`);
+    return this._instance.post(`/token/${chatId}`);
   }
 }
 

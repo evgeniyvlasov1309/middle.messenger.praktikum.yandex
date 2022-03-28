@@ -1,31 +1,32 @@
-import HTTP from "../../classes/httpTransport";
 import { BaseAPI } from "../base-api";
-import { PasswordRequest, User, UserSearchRequest } from "./user-api.types";
-
-const userAPIInstance = new HTTP("/user");
+import { IUser, PasswordRequest, UserSearchRequest } from "./user-api.types";
 
 class UserAPI extends BaseAPI {
-  profile(data: User) {
-    return userAPIInstance.put("/profile", {
+  constructor() {
+    super("/user");
+  }
+
+  setProfile(data: IUser): Promise<IUser> {
+    return this._instance.put("/profile", {
       data,
     });
   }
 
-  password(data: PasswordRequest) {
-    return userAPIInstance.put("/password", {
+  setPassword(data: PasswordRequest): Promise<void> {
+    return this._instance.put("/password", {
       data,
     });
   }
 
-  avatar(data: FormData) {
-    return userAPIInstance.put("/profile/avatar", {
+  setAvatar(data: FormData): Promise<IUser> {
+    return this._instance.put("/profile/avatar", {
       data,
       headers: {},
     });
   }
 
-  search(data: UserSearchRequest): Promise<User[]> {
-    return userAPIInstance.post("/search", {
+  search(data: UserSearchRequest): Promise<IUser[]> {
+    return this._instance.post("/search", {
       data,
     });
   }
