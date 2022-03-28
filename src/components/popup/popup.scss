@@ -1,0 +1,10 @@
+@import "~/src/css/variables.scss";
+
+.popup {
+  position: absolute;
+  z-index: 1;
+  padding: 15px;
+  background: $white;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgb(30 30 30 / 14%);
+}

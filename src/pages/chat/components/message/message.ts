@@ -1,9 +1,15 @@
-import Block, { Props } from "~/src/classes/block";
+import Block from "~/src/classes/block";
 import "./message.scss";
 import template from "./message.tmpl";
 
-export default class Message extends Block {
-  constructor(props: Props = {}) {
+interface IMessageProps {
+  className?: string;
+  content: string;
+  time: string;
+}
+
+export default class Message extends Block<IMessageProps> {
+  constructor(props: IMessageProps = {} as IMessageProps) {
     super("div", props);
   }
 

@@ -1,8 +1,9 @@
 Самостоятельный проект "Мессенджер"
 
 Реализована верстка страниц проекта, валидация форм
-
 Добавлены линтеры, компоненты, типизация
+Добавлены запросы к api, подключен WebSocket, добавлены тесты для роутера, блока, шаблонизатора и api клиента
+
 
 макеты: https://www.figma.com/file/hSvTvs332iATu137e5wRqv/Chat?node-id=0%3A1
 
@@ -14,4 +15,7 @@ npm run start
 сборка проекта:
 npm run build
 
-Ссылка на пуллреквест Sprint 3: https://github.com/evgeniyvlasov1309/middle.messenger.praktikum.yandex/pull/3
+запуск тестов:
+npm run test
+
+Ссылка на пуллреквест Sprint 2: https://github.com/evgeniyvlasov1309/middle.messenger.praktikum.yandex/pull/2

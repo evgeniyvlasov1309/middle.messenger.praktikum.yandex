@@ -11,6 +11,7 @@ export interface IInput extends Props {
   placeholder?: string;
   rule?: ValidationRule | undefined;
   error?: string;
+  accept?: string;
 }
 
 export default class Input extends Block<IInput> {
@@ -18,7 +19,15 @@ export default class Input extends Block<IInput> {
 
   propsClassName: string;
 
-  value = "";
+  private _value = "";
+
+  get value() {
+    return this._value || this.props.value;
+  }
+
+  set value(value) {
+    this._value = value;
+  }
 
   constructor(props: IInput) {
     super("div", props);
@@ -30,7 +39,6 @@ export default class Input extends Block<IInput> {
       events: {
         input: this.onInput.bind(this),
         blur: this.validate.bind(this),
-        focus: this.validate.bind(this),
       },
       error: "",
       value: "",

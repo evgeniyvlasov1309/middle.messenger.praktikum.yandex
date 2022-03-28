@@ -7,6 +7,7 @@ export interface IButton extends Props {
   type?: string;
   text?: string;
   className?: string;
+  focused?: boolean;
 }
 export default class Button extends Block<IButton> {
   constructor(props: IButton) {

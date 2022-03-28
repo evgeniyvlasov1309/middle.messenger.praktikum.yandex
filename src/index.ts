@@ -1,17 +1,20 @@
-import Link from "./components/link/link";
+import { Router } from "./classes/router";
+import authController from "./controllers/auth-controller";
 import "./index.scss";
-import HomePage from "./pages/home/home";
-import { render } from "./utils/utils";
+import ChatPage from "./pages/chat";
+import LoginPage from "./pages/login";
+import ProfilePage from "./pages/profile";
+import RegistrationPage from "./pages/registration";
 
-const component = new HomePage({
-  link0: new Link({
-    url: "/auth/login",
-    text: "auth",
-  }),
-  link1: new Link({ url: "/profile", text: "profile" }),
-  link2: new Link({ url: "/chat", text: "chat" }),
-  link3: new Link({ url: "/server-error", text: "500" }),
-  link4: new Link({ url: "/not-found-error", text: "404" }),
-});
+const router = new Router("#root");
 
-render("#root", component);
+router
+  .use("/", LoginPage, authController.redirectToMessenger)
+  .use("/sign-up", RegistrationPage)
+  .use("/messenger", ChatPage, authController.checkAuth)
+  .use("/settings", ProfilePage, authController.checkAuth)
+  .use("/settings/edit", ProfilePage, authController.checkAuth)
+  .use("/settings/password-change", ProfilePage, authController.checkAuth)
+  .start();
+
+export default router;

@@ -8,6 +8,7 @@ const template = (props: IInput) => `
       name="{{ name }}"
       value="{{ value }}"
       placeholder="{{ placeholder }}"
+      accept="{{ accept }}"
     />
     ${props.error && `<div class="input__error">{{ error }}</div>`}
   </template>

@@ -1,7 +1,9 @@
+import { WebSocketMessageRequest } from "~/src/api/message-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Button from "~/src/components/button/button";
 import Form from "~/src/components/form/form";
 import Input from "~/src/components/input/input";
+import messageController from "~/src/controllers/message-controller";
 import { getClassName } from "~/src/utils/utils";
 import "./message-panel.scss";
 import template from "./message-panel.tmpl";
@@ -37,8 +39,16 @@ export default class MessagePanel extends Block {
             "message-panel__send-button",
           ]),
         }),
-        onSubmit: () => {},
+        onSubmit: this.onSubmit.bind(this),
       }),
+    });
+  }
+
+  onSubmit(data: WebSocketMessageRequest) {
+    messageController.sendMessage(data.message);
+
+    this.fields[0].setProps({
+      value: "",
     });
   }
 

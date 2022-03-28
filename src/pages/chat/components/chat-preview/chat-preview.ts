@@ -3,10 +3,20 @@ import { getClassName } from "~/src/utils/utils";
 import "./chat-preview.scss";
 import template from "./chat-preview.tmpl";
 
-export default class ChatPreview extends Block {
-  constructor(props: Props = {}) {
+export interface IChatPreview extends Props {
+  title: string;
+  avatar: string;
+  content: string;
+  time: string;
+  count: number;
+  className?: string;
+}
+
+export default class ChatPreview extends Block<IChatPreview> {
+  constructor(props: IChatPreview) {
     super("div", props);
     this.setProps({
+      ...props,
       className: getClassName(["chat-preview", props.className || ""]),
     });
   }

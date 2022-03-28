@@ -1,10 +1,13 @@
+import { RegistrationRequest } from "~/src/api/auth/auth-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
 import Input from "~/src/components/input/input";
 import Link from "~/src/components/link/link";
+import authController from "~/src/controllers/auth-controller";
+import "./registration.scss";
 import template from "./registration.tmpl";
 
-export default class Registration extends Block {
+export default class RegistrationPage extends Block {
   fields: Input[] = [
     {
       className: "auth-form__input",
@@ -58,13 +61,17 @@ export default class Registration extends Block {
         fields: this.fields,
         submitText: "Зарегистрироваться",
         footer: new Link({
-          text: "Войти",
-          url: "/auth/login",
+          content: "Войти",
+          url: "/",
           className: "auth-form__link",
         }),
-        onSubmit: () => {},
+        onSubmit: this.onSubmit.bind(this),
       }),
     });
+  }
+
+  onSubmit(data: RegistrationRequest) {
+    authController.registration(data);
   }
 
   render() {

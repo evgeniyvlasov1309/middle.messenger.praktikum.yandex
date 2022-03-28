@@ -1,11 +1,9 @@
 import { Props } from "~/src/classes/block";
+import { childrenArrayToTemplate } from "~/src/utils/utils";
 
 const template = (props: Props) => `
   <template class="message-list">
-    <div class="message-list__date">23 декабря</div>
-    {{ message1 }}
-    {{ message2 }}
-    {{ message3 }}
+    ${childrenArrayToTemplate(props.messages || [])}
   </template>
 `;
 

@@ -1,9 +1,12 @@
+import { IUser } from "~/src/api/user/user-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
 import Input from "~/src/components/input/input";
+import userController from "~/src/controllers/user-controller";
+import withUser from "~/src/selectors/user";
 import template from "./edit.tmpl";
 
-export default class Edit extends Block {
+class Edit extends Block {
   fields: Input[] = [
     {
       className: "auth-form__input",
@@ -44,16 +47,33 @@ export default class Edit extends Block {
 
   constructor(props: Props = {}) {
     super("div", props);
+
     this.setProps({
       form: new Form({
         fields: this.fields,
         submitText: "Сохранить",
-        onSubmit: () => {},
+        onSubmit: this.onSubmit.bind(this),
       }),
     });
   }
 
+  onSubmit(data: IUser) {
+    userController.updateProfile(data);
+  }
+
+  updateFieldsValue() {
+    this.fields?.forEach((field) => {
+      field.setProps({
+        value: this.props.user && this.props.user[field.props.name || ""],
+      });
+    });
+  }
+
   render() {
+    this.updateFieldsValue();
+
     return this.compile(template(this.props), this.props);
   }
 }
+
+export default withUser(Edit as typeof Block);
