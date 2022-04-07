@@ -129,16 +129,6 @@ export function connect(mapStateToProps: (state: State) => Indexed) {
   };
 }
 
-export function debounce(func: Function, timeout = 1000) {
-  let timer: NodeJS.Timeout;
-  return (...args: any) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}
-
 export function formatDate(date: string) {
   return new Date(date).toLocaleString();
 }

@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce";
 import {
   AddUserRequest,
   IChat,
@@ -15,7 +16,7 @@ import env from "~/src/constants/env";
 import chatController from "~/src/controllers/chat-controller";
 import userController from "~/src/controllers/user-controller";
 import defaultAvatar from "~/src/images/image.svg";
-import { debounce, getClassName } from "~/src/utils/utils";
+import { getClassName } from "~/src/utils/utils";
 import ChatPopup from "./components/chat-popup/chat-popup";
 import "./top-panel.scss";
 import template from "./top-panel.tmpl";

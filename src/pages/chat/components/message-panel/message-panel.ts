@@ -2,7 +2,7 @@ import { WebSocketMessageRequest } from "~/src/api/message-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Button from "~/src/components/button/button";
 import Form from "~/src/components/form/form";
-import Input from "~/src/components/input/input";
+import Input, { IInput } from "~/src/components/input/input";
 import messageController from "~/src/controllers/message-controller";
 import { getClassName } from "~/src/utils/utils";
 import "./message-panel.scss";
@@ -16,7 +16,7 @@ export default class MessagePanel extends Block {
       className: "message-panel__input",
       rule: "required",
     },
-  ].map((field) => new Input(field));
+  ].map((field) => new Input(field as IInput));
 
   constructor(props: Props = {}) {
     super("div", props);

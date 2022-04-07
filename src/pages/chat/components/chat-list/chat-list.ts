@@ -1,4 +1,4 @@
-import { Chat } from "~/src/api/chat/chat-api.types";
+import { IChat } from "~/src/api/chat/chat-api.types";
 import Block, { Props } from "~/src/classes/block";
 import store, { StoreEvents } from "~/src/classes/store";
 import env from "~/src/constants/env";
@@ -21,7 +21,7 @@ export default class ChatList extends Block<Props> {
       const currentChat = store.getState().chat;
 
       const chats = store.getState().chats.map(
-        (chat: Chat) =>
+        (chat: IChat) =>
           new ChatPreview({
             className: currentChat.id === chat.id ? "active" : "",
             title: chat.title,
@@ -40,13 +40,13 @@ export default class ChatList extends Block<Props> {
       );
 
       this.setProps({
-        ...childrenArrayToProps(chats),
+        ...childrenArrayToProps(chats as any),
         chats,
       });
     });
   }
 
-  onChatPreviewClick(chat: Chat) {
+  onChatPreviewClick(chat: IChat) {
     store.set("chat", chat);
 
     chatController.connect();

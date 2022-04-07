@@ -11,12 +11,11 @@
     "declaration": false,
     "noImplicitAny": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "sourceMap": true,
     "strictNullChecks": true,
     "paths": {
       "~/*": ["./*"]
     }
   },
-  "include": ["src/**/*", "test/index.spec.ts"],
+  "include": ["src/**/*", "test/index.spec.ts", "src/svg.d.ts"],
 }
