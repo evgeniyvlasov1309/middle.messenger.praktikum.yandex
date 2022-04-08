@@ -71,6 +71,7 @@ export function isEqual(lhs: string, rhs: string) {
 
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
   for (const p in rhs) {
+    // eslint-disable-next-line no-prototype-builtins
     if (!rhs.hasOwnProperty(p)) {
       continue;
     }
@@ -116,6 +117,7 @@ export function set(
 }
 
 export function connect(mapStateToProps: (state: State) => Indexed) {
+  // eslint-disable-next-line func-names
   return function (Component: typeof Block) {
     return class extends Component {
       constructor(props: any = {}) {
