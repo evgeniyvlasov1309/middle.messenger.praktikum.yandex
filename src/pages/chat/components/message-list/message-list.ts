@@ -33,7 +33,7 @@ export default class MessageList extends Block {
       );
 
       this.setProps({
-        ...childrenArrayToProps(messages),
+        ...childrenArrayToProps(messages as any),
         messages,
       });
 

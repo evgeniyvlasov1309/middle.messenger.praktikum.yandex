@@ -1,7 +1,7 @@
 import { IUser } from "~/src/api/user/user-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
-import Input from "~/src/components/input/input";
+import Input, { IInput } from "~/src/components/input/input";
 import userController from "~/src/controllers/user-controller";
 import withUser from "~/src/selectors/user";
 import template from "./edit.tmpl";
@@ -43,7 +43,7 @@ class Edit extends Block {
       placeholder: "Телефон",
       rule: "phone",
     },
-  ].map((field) => new Input(field));
+  ].map((field) => new Input(field as IInput));
 
   constructor(props: Props = {}) {
     super("div", props);

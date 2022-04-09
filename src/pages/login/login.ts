@@ -1,7 +1,7 @@
 import { LoginRequest } from "~/src/api/auth/auth-api.types";
 import Block, { Props } from "~/src/classes/block";
 import Form from "~/src/components/form/form";
-import Input from "~/src/components/input/input";
+import Input, { IInput } from "~/src/components/input/input";
 import Link from "~/src/components/link/link";
 import authController from "~/src/controllers/auth-controller";
 import withUser from "~/src/selectors/user";
@@ -24,7 +24,7 @@ class LoginPage extends Block {
       placeholder: "Пароль",
       rule: "required",
     },
-  ].map((field) => new Input(field));
+  ].map((field) => new Input(field as IInput));
 
   constructor(props: Props = {}) {
     super("div", props);

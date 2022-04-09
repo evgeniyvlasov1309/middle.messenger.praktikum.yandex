@@ -15,7 +15,9 @@ class ChatController {
       const chats = await chatApi.getChats(data);
 
       store.set("chats", chats);
-    } catch (error) {}
+    } catch (error) {
+      alert(error);
+    }
   }
 
   async createChat(data: CreateChatRequest) {
@@ -25,7 +27,9 @@ class ChatController {
       await this.getChats();
 
       return await Promise.resolve();
-    } catch (error) {}
+    } catch (error) {
+      alert(error);
+    }
   }
 
   async addUserToChat(data: AddUserRequest) {
@@ -64,10 +68,12 @@ class ChatController {
     try {
       const chats = await chatApi.getChats(data);
 
-      const chat = chats.find((chat) => chat.title === data.title);
+      const chat = chats.find((c) => c.title === data.title);
 
       return chat;
-    } catch (error) {}
+    } catch (error) {
+      alert(error);
+    }
   }
 
   async connect() {

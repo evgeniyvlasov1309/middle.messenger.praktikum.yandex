@@ -38,14 +38,16 @@ class UserController {
     }
   }
 
-  async search(data: UserSearchRequest) {
+  async search(data: UserSearchRequest): Promise<IUser | undefined> {
     try {
       const users = await userApi.search(data);
 
-      const user = users.find((user) => user.login === data.login);
+      const user = users.find((u) => u.login === data.login);
 
       return user;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
