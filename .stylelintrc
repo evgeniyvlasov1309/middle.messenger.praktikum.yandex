@@ -9,6 +9,6 @@
   "rules": {
     "color-hex-case": "lower"
   },
-  "files": ["**/*.scss"],
+  "files": ["**/*{.css,.scss}"],
   "ignoreFiles": ["dist/*"]
 }

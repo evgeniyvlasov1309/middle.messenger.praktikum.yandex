@@ -53,7 +53,9 @@ export class Router {
     this._currentRoute = route;
 
     if (route) {
-      route.middleware && route.middleware();
+      if (route.middleware) {
+        route.middleware();
+      }
 
       route.render();
     }

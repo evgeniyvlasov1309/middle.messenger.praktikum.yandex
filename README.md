@@ -1,13 +1,11 @@
 Самостоятельный проект "Мессенджер"
 
-Реализована верстка страниц проекта, валидация форм
-Добавлены линтеры, компоненты, типизация
-Добавлены запросы к api, подключен WebSocket, добавлены тесты для роутера, блока, шаблонизатора и api клиента
-
+Реализован основной функционал чата
+Добавлены конфигурации webpack, docker, проведен аудит пакетов 
 
 макеты: https://www.figma.com/file/hSvTvs332iATu137e5wRqv/Chat?node-id=0%3A1
 
-хостинг: https://kind-pare-07aec2.netlify.app
+хостинг: https://mysterious-wave-89764.herokuapp.com/
 
 запуск проекта:
 npm run start
@@ -17,5 +15,3 @@ npm run build
 
 запуск тестов:
 npm run test
-
-Ссылка на пуллреквест Sprint 2: https://github.com/evgeniyvlasov1309/middle.messenger.praktikum.yandex/pull/2
